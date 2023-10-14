@@ -1,6 +1,6 @@
 
 
-REPOSITORY=clrxbl/tailscale-svc-lb
+REPOSITORY=6ixfalls/tailscale-svc-lb
 TAG=latest
 
 build: build-controller build-runtime

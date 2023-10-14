@@ -106,6 +106,15 @@ class BaseResource:
                                         optional=True,
                                     )
                                 )
+                            ),
+                            kubernetes.client.V1EnvVar(
+                                name="TS_EXTRA_ARGS", value_from=kubernetes.client.V1EnvVarSource(
+                                    secret_key_ref=kubernetes.client.V1SecretKeySelector(
+                                        name=config.SECRET_NAME,
+                                        key="ts-extra-args",
+                                        optional=True,
+                                    )
+                                )
                             )
                         ],
                         lifecycle=kubernetes.client.V1Lifecycle(

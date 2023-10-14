@@ -11,4 +11,4 @@ spec:
       targetPort: 8080
   type: LoadBalancer
   allocateLoadBalancerNodePorts: false
-  loadBalancerClass: "svc-lb.tailscale.iptables.sh/lb"
+  loadBalancerClass: "svc-lb.tailscale.sixfal.ls/lb"

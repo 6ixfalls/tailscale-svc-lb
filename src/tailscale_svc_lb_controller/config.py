@@ -5,7 +5,7 @@ import sys
 from os import environ as env
 
 # -- Constants
-CONTROLLER_PREFIX = "svc-lb.tailscale.iptables.sh"
+CONTROLLER_PREFIX = "svc-lb.tailscale.sixfal.ls"
 SERVICE_NAME_LABEL = CONTROLLER_PREFIX + "/svc-name"
 SERVICE_NAMESPACE_LABEL = CONTROLLER_PREFIX + "/svc-namespace"
 
@@ -46,7 +46,7 @@ if TS_PROXY_REPLICA_COUNT <= 0:
     sys.exit(1)
 
 # Tailscale Proxy Runtime Container Image
-TS_PROXY_RUNTIME_IMAGE = env.get("TS_PROXY_RUNTIME_IMAGE", "clrxbl/tailscale-svc-lb-runtime:latest")
+TS_PROXY_RUNTIME_IMAGE = env.get("TS_PROXY_RUNTIME_IMAGE", "ghcr.io/6ixfalls/tailscale-svc-lb-runtime:latest")
 
 # Tailscale Proxy Runtime Container ImagePullPolicy
 TS_PROXY_RUNTIME_IMAGE_PULL_POLICY = env.get("TS_PROXY_RUNTIME_IMAGE_PULL_POLICY", "IfNotPresent")

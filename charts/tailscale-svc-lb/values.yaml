@@ -11,14 +11,17 @@ resourcePrefix: "ts-"
 
 # LoadBalancerClass this instance of the controller should monitor
 # WARNING: Changing this after deploying the controller will result in orphaned resources.
-loadBalancerClass: "svc-lb.tailscale.iptables.sh/lb"
+loadBalancerClass: "svc-lb.tailscale.sixfal.ls/lb"
 
 # (Optional) Auth Key to use when starting tailscale. Automates the login process.
 tailscaleAuthKey: ""
 
+# (Optional) Extra args to pass to `tailscale set`. Can be used to use a custom login server, ex: "--login-server=https://headscale.mydomain.com"
+tailscaleExtraArgs: ""
+
 controller:
   image:
-    repository: clrxbl/tailscale-svc-lb-controller
+    repository: ghcr.io/6ixfalls/tailscale-svc-lb-controller
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
     tag: "latest"
@@ -74,8 +77,8 @@ proxy:
   deploymentReplicas: 2
 
   # NodeLabel to use when creating Tailscale Proxy deployment. The value of this label should be "true"
-  #  Example: "svc-lb.tailscale.iptables.sh/deploy" will use nodeLabelSelector svc-lb.tailscale.iptables.sh/deploy=true
-  nodeSelectorLabel: "svc-lb.tailscale.iptables.sh/deploy"
+  #  Example: "svc-lb.tailscale.sixfal.ls/deploy" will use nodeLabelSelector svc-lb.tailscale.sixfal.ls/deploy=true
+  nodeSelectorLabel: "svc-lb.tailscale.sixfal.ls/deploy"
 
   # Generate a hostname based on the target service name and target service namespace
   generateHostnameFromServiceName: false
@@ -86,7 +89,7 @@ proxy:
   # Runtime image to deploy as the
   runtime:
     image:
-      repository: clrxbl/tailscale-svc-lb-runtime
+      repository: ghcr.io/6ixfalls/tailscale-svc-lb-runtime
       pullPolicy: IfNotPresent
       # Overrides the image tag whose default is the chart appVersion.
       tag: "latest"

@@ -2,7 +2,7 @@
 name = "tailscale-svc-lb"
 version = "1.0.0"
 description = "Tailscale service load balancer Kubernetes"
-authors = ["Michael H. <michael@iptables.sh>"]
+authors = ["6ixfalls <six@sixfalls.me>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
