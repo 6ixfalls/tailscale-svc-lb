@@ -8,6 +8,8 @@ name: Docker
 on:
   push:
     branches: [ "main" ]
+    # Publish semver tags as releases.
+    tags: [ 'tailscale-svc-lb-*.*.*' ]
   workflow_dispatch:
 
 jobs:
