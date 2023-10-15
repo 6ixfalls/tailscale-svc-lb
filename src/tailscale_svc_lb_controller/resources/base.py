@@ -146,7 +146,7 @@ class BaseResource:
                         command=[
                             "/busybox/sh",
                             "-c",
-                            f"sleep 12 && /app/server --election={config.RESOURCE_PREFIX}{self.target_service_name} --election-namespace={self.tailscale_proxy_namespace} --http=0.0.0.0:4040"
+                            f"/app/server --election={config.RESOURCE_PREFIX}{self.target_service_name} --election-namespace={self.tailscale_proxy_namespace} --http=0.0.0.0:4040 --id=$(hostname)"
                         ],
                         lifecycle=kubernetes.client.V1Lifecycle(
                             pre_stop=kubernetes.client.V1LifecycleHandler(
