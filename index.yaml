@@ -2,6 +2,20 @@ apiVersion: v1
 entries:
   tailscale-svc-lb:
   - apiVersion: v2
+    appVersion: 1.0.2
+    created: "2023-10-15T00:00:34.802708846Z"
+    description: klipper-lb but Tailscale
+    digest: 66852e0521a5f785a455a7ea466694d08ccc05145e15b6e82c43edff20610a87
+    maintainers:
+    - email: six@sixfalls.me
+      name: Six
+      url: https://sixfal.ls
+    name: tailscale-svc-lb
+    type: application
+    urls:
+    - https://github.com/6ixfalls/tailscale-svc-lb/releases/download/tailscale-svc-lb-1.0.2/tailscale-svc-lb-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
     appVersion: 1.0.1
     created: "2023-10-14T23:30:55.275785758Z"
     description: klipper-lb but Tailscale
@@ -15,4 +29,4 @@ entries:
     urls:
     - https://github.com/6ixfalls/tailscale-svc-lb/releases/download/tailscale-svc-lb-1.0.1/tailscale-svc-lb-1.0.1.tgz
     version: 1.0.1
-generated: "2023-10-14T23:30:55.275790658Z"
+generated: "2023-10-15T00:00:34.802724048Z"
