@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tailscale-svc-lb"
-version = "1.0.0"
+version = "1.0.2"
 description = "Tailscale service load balancer Kubernetes"
 authors = ["6ixfalls <six@sixfalls.me>"]
 
