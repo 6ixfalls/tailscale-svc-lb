@@ -143,7 +143,7 @@ class BaseResource:
                             limits={"cpu": config.LEADER_ELECTOR_LIMIT_CPU,
                                     "memory": config.LEADER_ELECTOR_LIMIT_MEM}
                         ),
-                        args=[
+                        command=[
                             "/busybox/sh",
                             "-c",
                             f"sleep 12 && /app/server --election={config.RESOURCE_PREFIX}{self.target_service_name} --election-namespace={self.tailscale_proxy_namespace} --http=0.0.0.0:4040"
