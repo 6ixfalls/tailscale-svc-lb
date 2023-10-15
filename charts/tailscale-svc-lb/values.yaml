@@ -113,9 +113,9 @@ proxy:
 
   leaderElector:
     image:
-      repository: gcr.io/google_containers/leader-elector
+      repository: icr.io/instana/leader-elector
       pullPolicy: IfNotPresent
-      tag: "0.5"
+      tag: "0.5.18"
 
     imagePullSecrets: []
     # - exampleSecretName
