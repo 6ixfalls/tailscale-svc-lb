@@ -1,5 +1,4 @@
 FROM tailscale/tailscale:v1.32.3
-ADD https://dl.k8s.io/release/v1.24.1/bin/linux/amd64/kubectl /usr/local/bin/kubectl
-RUN apk add --no-cache haproxy jq curl bash && chmod +x /usr/local/bin/kubectl
+RUN apk add --no-cache haproxy jq curl bash kubectl
 ADD *.sh /
 CMD "/run.sh"
