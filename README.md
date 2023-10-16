@@ -5,6 +5,12 @@ Basically does what [Tailscale's k8s examples](https://github.com/tailscale/tail
 
 [![asciicast](https://asciinema.org/a/smlS1PDekgvJBDuClsz9huMJy.svg)](https://asciinema.org/a/smlS1PDekgvJBDuClsz9huMJy)
 
+Fork of the now archived repository [clrxbl/tailscale-svc-lb](https://github.com/clrxbl/tailscale-svc-lb).
+
+## Why Fork?
+
+The official Tailscale operator, which the upstream was archived/EOL for, utilizes the proprietary Tailscale API, including OAuth. This isn't supported in Headscale, and likely won't ever be. As a result, this fork was born, to continue to support a method to expose LoadBalancers to Tailscale, without utilizing the official control plane.
+
 ## Installation
 
 Add the Helm chart as shown below
