@@ -27,6 +27,16 @@ echo "Running tailscale entrypoint"
 /usr/local/bin/containerboot &
 PID=$!
 
+echo "Waiting for tailscale to be Running"
+while :; do
+  sleep 2
+  TAILSCALE_BACKEND_STATE="$(tailscale status -json | grep -oP '"BackendState": "\K[^"]*')"
+  if [ "${TAILSCALE_BACKEND_STATE}" == "Running" ]; then
+    echo "Tailscale is up"
+    break
+  fi
+done
+
 TS_IP=$(tailscale --socket=/tmp/tailscaled.sock ip -4)
 TS_IP_B64=$(echo -n "${TS_IP}" | base64 -w 0)
 
