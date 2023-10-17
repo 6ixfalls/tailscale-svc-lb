@@ -9,7 +9,7 @@ RUN case ${TARGETPLATFORM} in \
  && wget -q https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/${KUBE_ARCH}/kubectl -O /usr/local/bin/kubectl \
  && chmod +x /usr/local/bin/kubectl
 
-ENTRYPOINT ["tini", "--"]
+#ENTRYPOINT ["tini", "--"]
 
 ADD *.sh /
 RUN chmod +x /*.sh
