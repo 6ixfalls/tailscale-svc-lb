@@ -24,7 +24,8 @@ else
 fi
 
 echo "Running tailscale entrypoint"
-/usr/local/bin/containerboot 
+/usr/local/bin/containerboot &
+PID=$!
 
 TS_IP=$(tailscale --socket=/tmp/tailscaled.sock ip -4)
 TS_IP_B64=$(echo -n "${TS_IP}" | base64 -w 0)
@@ -53,3 +54,5 @@ iptables -t mangle -A POSTROUTING -p tcp --tcp-flags SYN,RST SYN -o ${PRIMARY_NE
 echo "Updating secret with Tailscale IP"
 # patch secret with the tailscale ipv4 address
 kubectl patch secret "${TS_KUBE_SECRET}" --namespace "${PROXY_NAMESPACE}" --type=json --patch="[{\"op\":\"replace\",\"path\":\"/data/ts-ip\",\"value\":\"${TS_IP_B64}\"}]"
+
+wait ${PID}

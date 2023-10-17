@@ -117,13 +117,6 @@ class BaseResource:
                                 )
                             )
                         ],
-                        lifecycle=kubernetes.client.V1Lifecycle(
-                            pre_stop=kubernetes.client.V1LifecycleHandler(
-                                _exec=kubernetes.client.V1ExecAction(
-                                    command=["/stop.sh"]
-                                )
-                            )
-                        ),
                         security_context=kubernetes.client.V1SecurityContext(
                             privileged=True,
                             capabilities=kubernetes.client.V1Capabilities(
