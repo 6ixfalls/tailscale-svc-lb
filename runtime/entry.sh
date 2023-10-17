@@ -30,8 +30,7 @@ PID=$!
 echo "Waiting for tailscale to be Running"
 while :; do
   sleep 2
-  TAILSCALE_BACKEND_STATE=="$(tailscale --socket=/tmp/tailscaled.sock status -json | grep -o '"BackendState": "[^"]*"' | cut -d '"' -f 4)"
-  echo "$TAILSCALE_BACKEND_STATE"
+  TAILSCALE_BACKEND_STATE="$(tailscale --socket=/tmp/tailscaled.sock status -json | grep -o '"BackendState": "[^"]*"' | cut -d '"' -f 4)"
   if [ "${TAILSCALE_BACKEND_STATE}" == "Running" ]; then
     echo "Tailscale is up"
     break
