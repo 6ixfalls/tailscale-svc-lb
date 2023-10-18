@@ -1,6 +1,13 @@
 #!/bin/bash
 
 export TS_USERSPACE=false
+export TS_AUTH_ONCE=false
+
+TS_AUTH_KEY="${TS_AUTH_KEY:-}"
+TS_ROUTES="${TS_ROUTES:-}"
+TS_HOSTNAME="${TS_ROUTES:-}"
+TS_EXTRA_ARGS="${TS_EXTRA_ARGS:-}"
+TS_ACCEPT_DNS="${TS_ACCEPT_DNS:-false}"
 
 # Set to 'true' to skip leadership election. Only use when testing against one node
 #   This is useful on non x86_64 architectures, as the leader-elector image is only provided for that arch
@@ -27,6 +34,21 @@ echo "Running tailscale entrypoint"
 /usr/local/bin/containerboot &
 PID=$!
 
+# https://github.com/tailscale/tailscale/blob/3f27087e9d139e4d69ca9435fa333702de802bf2/cmd/containerboot/main.go#L545
+UP_ARGS="--accept-dns=${TS_ACCEPT_DNS}"
+if [[ ! -z "${TS_AUTH_KEY}" ]]; then
+  UP_ARGS="--authkey=${TS_AUTH_KEY} ${UP_ARGS}"
+fi
+if [[ ! -z "${TS_ROUTES}" ]]; then
+  UP_ARGS="--advertise-routes=${TS_ROUTES} ${UP_ARGS}"
+fi
+if [[ ! -z "${TS_HOSTNAME}" ]]; then
+  UP_ARGS="--hostname=${TS_HOSTNAME} ${UP_ARGS}"
+fi
+if [[ ! -z "${TS_EXTRA_ARGS}" ]]; then
+  UP_ARGS="${UP_ARGS} ${TS_EXTRA_ARGS:-}"
+fi
+
 echo "Waiting for tailscale to be Running"
 while :; do
   sleep 2
@@ -36,7 +58,7 @@ while :; do
     break
   elif [ "${TAILSCALE_BACKEND_STATE}" == "Stopped" ]; then
     echo "Starting tailscale"
-    tailscale --socket=/tmp/tailscaled.sock up || true
+    tailscale --socket=/tmp/tailscaled.sock up ${UP_ARGS} || true
   fi
 done
 
