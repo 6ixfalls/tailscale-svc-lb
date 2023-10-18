@@ -2,12 +2,7 @@
 
 export TS_USERSPACE=false
 export TS_AUTH_ONCE=false
-
-TS_AUTH_KEY="${TS_AUTH_KEY:-}"
-TS_ROUTES="${TS_ROUTES:-}"
-TS_HOSTNAME="${TS_ROUTES:-}"
-TS_EXTRA_ARGS="${TS_EXTRA_ARGS:-}"
-TS_ACCEPT_DNS="${TS_ACCEPT_DNS:-false}"
+export TS_ACCEPT_DNS=false
 
 # Set to 'true' to skip leadership election. Only use when testing against one node
 #   This is useful on non x86_64 architectures, as the leader-elector image is only provided for that arch
