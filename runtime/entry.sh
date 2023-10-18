@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TS_USERSPACE=false
+export TS_USERSPACE=false
 
 # Set to 'true' to skip leadership election. Only use when testing against one node
 #   This is useful on non x86_64 architectures, as the leader-elector image is only provided for that arch
