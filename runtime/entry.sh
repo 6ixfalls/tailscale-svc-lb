@@ -34,6 +34,9 @@ while :; do
   if [ "${TAILSCALE_BACKEND_STATE}" == "Running" ]; then
     echo "Tailscale is up"
     break
+  elif [ "${TAILSCALE_BACKEND_STATE}" == "Stopped" ]; then
+    echo "Starting tailscale"
+    tailscale --socket=/tmp/tailscaled.sock up || true
   fi
 done
 
