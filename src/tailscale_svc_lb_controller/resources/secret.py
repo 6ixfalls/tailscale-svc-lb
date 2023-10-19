@@ -14,6 +14,9 @@ class Secret(BaseResource):
             metadata=kubernetes.client.V1ObjectMeta(
                 name=f"{config.RESOURCE_PREFIX}{self.target_service_name}",
                 labels=helpers.get_common_labels(self.target_service_name, self.target_service_namespace),
+                annotations={
+                    "liqo.io/skip-reflection": "true"
+                },
                 namespace=self.tailscale_proxy_namespace,
             ),
             type="Opaque",
