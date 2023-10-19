@@ -25,6 +25,8 @@ else
   done
 fi
 
+printenv | grep "TS_"
+
 echo "Running tailscale entrypoint"
 /usr/local/bin/containerboot &
 PID=$!
