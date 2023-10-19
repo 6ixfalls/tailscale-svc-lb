@@ -1,7 +1,6 @@
 #!/bin/bash
 
 export TS_USERSPACE=false
-export TS_AUTH_ONCE=false
 export TS_ACCEPT_DNS=false
 
 # Set to 'true' to skip leadership election. Only use when testing against one node
