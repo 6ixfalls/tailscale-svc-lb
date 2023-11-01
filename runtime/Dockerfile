@@ -1,4 +1,4 @@
-FROM tailscale/tailscale:v1.48.2
+FROM tailscale/tailscale:v1.52.0
 ARG TARGETPLATFORM
 ARG KUBECTL_VERSION=v1.27.7
 
