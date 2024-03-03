@@ -99,7 +99,7 @@ class BaseResource:
                                                            self.target_service_namespace)
                             ),
                             kubernetes.client.V1EnvVar(
-                                name="TS_AUTH_KEY", value_from=kubernetes.client.V1EnvVarSource(
+                                name="TS_AUTHKEY", value_from=kubernetes.client.V1EnvVarSource(
                                     secret_key_ref=kubernetes.client.V1SecretKeySelector(
                                         name=config.SECRET_NAME,
                                         key="ts-auth-key",
