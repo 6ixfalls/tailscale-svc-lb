@@ -1,6 +1,6 @@
-FROM tailscale/tailscale:v1.52.0
+FROM tailscale/tailscale:v1.60.1
 ARG TARGETPLATFORM
-ARG KUBECTL_VERSION=v1.27.7
+ARG KUBECTL_VERSION=v1.27.11
 
 RUN apk add --no-cache haproxy jq curl bash
 RUN case ${TARGETPLATFORM} in \
