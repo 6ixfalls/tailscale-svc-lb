@@ -115,7 +115,7 @@ proxy:
     image:
       repository: icr.io/instana/leader-elector
       pullPolicy: IfNotPresent
-      tag: "0.5.18"
+      tag: "0.5.19"
 
     imagePullSecrets: []
     # - exampleSecretName
