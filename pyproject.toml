@@ -3,11 +3,12 @@ name = "tailscale-svc-lb"
 version = "1.0.4"
 description = "Tailscale service load balancer Kubernetes"
 authors = ["6ixfalls <six@sixfalls.me>"]
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.10"
-kopf = "^1.35.4"
-kubernetes = "^23.6.0"
+kopf = "^1.38.0"
+kubernetes = "^27.2.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

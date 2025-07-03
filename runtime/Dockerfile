@@ -10,6 +10,6 @@ RUN case ${TARGETPLATFORM} in \
  && wget -q https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/${KUBE_ARCH}/kubectl -O /usr/local/bin/kubectl \
  && chmod +x /usr/local/bin/kubectl
 
-ADD *.sh /
-RUN chmod +x /*.sh
-CMD "/entry.sh"
+ADD entry.sh /
+RUN chmod +x /entry.sh
+CMD ["/entry.sh"]
