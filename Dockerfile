@@ -17,7 +17,7 @@ RUN apk add --no-cache --virtual .python_deps build-base python3-dev libffi-dev 
 ADD pyproject.toml /app/pyproject.toml
 RUN apk add --no-cache --virtual .build_deps gcc g++ && \
       cd /app && \
-      poetry install --no-dev && \
+      poetry install --only main && \
       apk del .build_deps
 
 ADD src /app/src
